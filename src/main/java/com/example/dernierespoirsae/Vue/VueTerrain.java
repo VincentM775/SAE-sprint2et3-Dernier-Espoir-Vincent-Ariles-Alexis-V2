@@ -26,7 +26,7 @@ public class VueTerrain {
         this.environnement = environnement;
         terrain.setTerrain(terrainColision);
 
-        Image tileset = new Image("file:src/main/resources/com/example/dernierespoirsae/tiles.png", 1792, 1120, false, false);
+        Image tileset = new Image(getClass().getResource("/com/example/dernierespoirsae/tiles.png").toExternalForm(), 1792, 1120, false, false);
 
         int tileWidth = 32;
         int tileHeight = 32;

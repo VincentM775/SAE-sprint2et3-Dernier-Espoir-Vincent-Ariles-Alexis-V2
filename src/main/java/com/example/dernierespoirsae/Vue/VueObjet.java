@@ -15,7 +15,7 @@ public abstract class VueObjet {
     public void creeViewObjet() {
 
         //Recuperation de l'image de l'arme a afficher
-        Image imageObjet = new Image("file:src/main/resources/com/example/dernierespoirsae/images/"+objets.getType()+".png");
+        Image imageObjet = new Image(getClass().getResource("/com/example/dernierespoirsae/images/"+objets.getType()+".png").toExternalForm());
 
         //Ajout de cette image a imageView pour pouvoir l'afficher
         ImageView imageView = new ImageView(imageObjet);

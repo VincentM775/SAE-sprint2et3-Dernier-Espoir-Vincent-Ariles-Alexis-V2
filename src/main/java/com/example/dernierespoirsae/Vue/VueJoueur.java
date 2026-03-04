@@ -14,7 +14,7 @@ public class VueJoueur extends VueActeur{
 
     @Override
     public String imageACreer() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/joueur0.png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/joueur0.png").toExternalForm();
     }
 
     @Override

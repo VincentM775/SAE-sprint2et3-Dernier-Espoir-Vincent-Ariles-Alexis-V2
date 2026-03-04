@@ -1,5 +1,6 @@
 package com.example.dernierespoirsae.controleur;
 
+import com.example.dernierespoirsae.Main;
 import com.example.dernierespoirsae.Observateur.*;
 import com.example.dernierespoirsae.algo.BFS;
 import com.example.dernierespoirsae.Vue.*;
@@ -14,6 +15,7 @@ import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -49,6 +51,7 @@ public class Controleur implements Initializable {
     private BFS bfs;
     private Button boutonRelance;
     private ImageView background;
+    private Label labelPerdu;
 
     public void initialize(URL location, ResourceBundle ressource) {
 
@@ -64,16 +67,20 @@ public class Controleur implements Initializable {
         boutonRelance.setDisable(false);
         boutonRelance.setVisible(true);
         principalPane.getChildren().add(boutonRelance);
-        background = new ImageView(new Image("file:src/main/resources/com/example/dernierespoirsae/images/background.jpg",1100, 1000, false, false));
+        background = new ImageView(new Image(getClass().getResource("/com/example/dernierespoirsae/images/background.jpg").toExternalForm(),1100, 1000, false, false));
         principalPane.getChildren().add(background);
         background.setTranslateY(-100);
+        labelPerdu = new Label("Perdu !");
+        labelPerdu.setStyle("-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: red;");
+        labelPerdu.setVisible(false);
+        principalPane.getChildren().add(labelPerdu);
         boutonRelance.toFront();
         inventaireVBox.setVisible(false);
     }
 
     public void lancement(){
 
-        LoadJSON loadJSON = new LoadJSON("src/main/resources/com/example/dernierespoirsae/terrain0.json");
+        LoadJSON loadJSON = new LoadJSON("/com/example/dernierespoirsae/terrain0.json");
 
         inventaireVBox.setVisible(true);
         barreViePane.setVisible(true);
@@ -217,12 +224,23 @@ public class Controleur implements Initializable {
             // c'est un eventHandler d'ou le lambda
             (ev ->{
                 if(environnement.getJoueur().getVie() <= 0){
+                    int joueurX = environnement.getJoueur().getX();
+                    int joueurY = environnement.getJoueur().getY();
                     clear();
+                    boutonRelance.setTranslateX(joueurX - 45);
+                    boutonRelance.setTranslateY(joueurY - 25);
+                    background.setTranslateX(joueurX - (double) Main.longeur / 2);
+                    background.setTranslateY(joueurY - (double) Main.largeur / 2 - 100);
                     boutonRelance.setDisable(false);
                     boutonRelance.setVisible(true);
                     inventaireVBox.setVisible(false);
                     barreViePane.setVisible(false);
                     background.setVisible(true);
+                    labelPerdu.setTranslateX(joueurX - 70);
+                    labelPerdu.setTranslateY(joueurY - 80);
+                    labelPerdu.setVisible(true);
+                    labelPerdu.toFront();
+                    boutonRelance.toFront();
                     gameLoop.stop();
                 }
                 else {
@@ -257,6 +275,7 @@ public class Controleur implements Initializable {
         this.environnement = null;
         boutonRelance.setVisible(false);
         background.setVisible(false);
+        labelPerdu.setVisible(false);
     }
 
     public void stopfreeze(){

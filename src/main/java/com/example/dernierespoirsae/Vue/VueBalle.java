@@ -14,6 +14,6 @@ public class VueBalle extends VueProjectile {
 
     @Override
     public String nomFichierVue() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/bullet.png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/bullet.png").toExternalForm();
     }
 }

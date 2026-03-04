@@ -14,7 +14,7 @@ public class VueBaveZmort extends VueZombie{
 
     @Override
     public String imageACreer() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/bavezmort0.png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/bavezmort0.png").toExternalForm();
     }
     @Override
     public int[] placementImage() {

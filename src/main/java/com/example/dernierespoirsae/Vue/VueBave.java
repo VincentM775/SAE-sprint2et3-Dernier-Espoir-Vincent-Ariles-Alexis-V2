@@ -13,6 +13,6 @@ public class VueBave extends VueProjectile{
 
     @Override
     public String nomFichierVue() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/bave_projectile.png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/bave_projectile.png").toExternalForm();
     }
 }

@@ -58,7 +58,7 @@ public class VueInventaireObjets {
             emplacement.getChildren().add(label);
 
             //Charger l'image de l'objet
-            Image imageObjet = new Image("file:src/main/resources/com/example/dernierespoirsae/images/" + objets.getType() + ".png");
+            Image imageObjet = new Image(getClass().getResource("/com/example/dernierespoirsae/images/" + objets.getType() + ".png").toExternalForm());
 
             //Stock l'image de l'objet dans une imageView pour pouvoir les afficher
             ImageView imageView = new ImageView(imageObjet);

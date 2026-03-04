@@ -5,8 +5,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class LoadJSON {
@@ -21,13 +23,14 @@ public class LoadJSON {
         loadMap(file);
     }
 
-    public void loadMap(String filename) {
+    public void loadMap(String resourcePath) {
         ArrayList<Integer> elementsMapFond = new ArrayList<>();
         ArrayList<Integer> elementsMapAutres = new ArrayList<>();
         ArrayList<Integer> elementsMapColision = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader(filename)) {
+        try (InputStream is = getClass().getResourceAsStream(resourcePath);
+             InputStreamReader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
             JSONArray layersArray = (JSONArray) jsonObject.get("layers");
 

@@ -25,7 +25,7 @@ public class VuePNJ extends VueActeur{
     }
     @Override
     public String imageACreer() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/"+getActeur().getNom()+".png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/"+getActeur().getNom()+".png").toExternalForm();
     }
 
     @Override

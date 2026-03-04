@@ -16,14 +16,14 @@ public class VueCocktailMolotov extends VueProjectile {
 
     @Override
     public String nomFichierVue() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/cocktailMolotov.png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/cocktailMolotov.png").toExternalForm();
     }
     public void explosion(){
         int tuileAcolonne = getProjectile().getX() / getEnvironnement().getInfoTuile()[0];
         int tuileAligne = getProjectile().getY() / getEnvironnement().getInfoTuile()[0];
         int tuilePositionEListe; // récupère la position de l'ennemi dans la liste
 
-        ModifVue.addGifToPane(getProjectile().getX(), getProjectile().getY(), 96, "file:src/main/resources/com/example/dernierespoirsae/images/explosionFeu.gif", 480,getPersoPane());
+        ModifVue.addGifToPane(getProjectile().getX(), getProjectile().getY(), 96, getClass().getResource("/com/example/dernierespoirsae/images/explosionFeu.gif").toExternalForm(), 480,getPersoPane());
 
         for (int y = -1; y <= 1; y++) {
             for (int x = -1; x <= 1; x++) {

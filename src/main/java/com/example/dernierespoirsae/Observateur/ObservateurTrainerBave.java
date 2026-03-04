@@ -22,7 +22,7 @@ public class ObservateurTrainerBave implements ListChangeListener<Bave> {
         this.environnement = environnement;
         this.animationPane = animationPane;
         this.terrainData = environnement.getTerrain().getTerrain();
-        this.baveImage = new Image("file:src/main/resources/com/example/dernierespoirsae/images/flaque_bave.png");
+        this.baveImage = new Image(getClass().getResource("/com/example/dernierespoirsae/images/flaque_bave.png").toExternalForm());
         this.vueTerrain = vueterrain;
     }
     @Override

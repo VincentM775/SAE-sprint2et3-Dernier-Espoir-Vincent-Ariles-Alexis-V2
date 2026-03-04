@@ -1,1 +1,4 @@
-java -jar DernierEspoirSAE-1.0-SNAPSHOT-spring-boot.jar
+@echo off
+cd /d "%~dp0\.."
+call mvnw.cmd javafx:run
+pause

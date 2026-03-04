@@ -25,7 +25,7 @@ public class VueZamikaze extends VueZombie{
 
     @Override
     public String imageACreer() {
-        return "file:src/main/resources/com/example/dernierespoirsae/images/zamikaze0.png";
+        return getClass().getResource("/com/example/dernierespoirsae/images/zamikaze0.png").toExternalForm();
     }
 
     public void explosion() {
@@ -34,7 +34,7 @@ public class VueZamikaze extends VueZombie{
         int tuilePositionEListe; // récupère la position de l'ennemi dans la liste
         int val;
 
-        ModifVue.addGifToPane(getActeur().getX(), getActeur().getY(), 96, "file:src/main/resources/com/example/dernierespoirsae/images/explosion.gif", 480,getPersoPane());
+        ModifVue.addGifToPane(getActeur().getX(), getActeur().getY(), 96, getClass().getResource("/com/example/dernierespoirsae/images/explosion.gif").toExternalForm(), 480,getPersoPane());
 
         for (int y = -1; y <= 1; y++) {
             for (int x = -1; x <= 1; x++) {
